@@ -97,3 +97,4 @@ def generate_feedback(message, language, scenario):
 def empty_feedback():
     return {'grammar': '', 'suggestion': '', 'new_phrase': ''}
 
+
