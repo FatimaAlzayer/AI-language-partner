@@ -151,12 +151,7 @@ document.querySelectorAll("#languageCards .card").forEach(card=>{
     card.addEventListener("click",()=>{
         document.querySelectorAll("#languageCards .card").forEach(c=>c.classList.remove("selected"));
         card.classList.add("selected");
-        selectedLanguage = card.dataset.lang;
-
-        // Save to localStorage
-        localStorage.setItem("language", selectedLanguage);
-
-        // Show scenarios
+        selectedLanguage=card.dataset.lang;
         document.getElementById("scenarioCards").style.display="grid";
         document.getElementById("scenarioTitle").style.display="block";
     });
@@ -167,30 +162,26 @@ document.querySelectorAll("#scenarioCards .card").forEach(card=>{
     card.addEventListener("click",()=>{
         document.querySelectorAll("#scenarioCards .card").forEach(c=>c.classList.remove("selected"));
         card.classList.add("selected");
-        selectedScenario = card.dataset.scenario;
-
-        // Save to localStorage
-        localStorage.setItem("scenario", selectedScenario);
-
+        selectedScenario=card.dataset.scenario;
         document.getElementById("startBtn").style.display="inline-block";
     });
 });
-// When user clicks the "Let's Start Learning" button
-document.getElementById("startBtn").addEventListener("click", () => {
-    if (!selectedLanguage || !selectedScenario) {
-        alert("Please select a language and scenario first!");
+
+/* Start button redirect */
+document.getElementById("startBtn").addEventListener("click", function(){
+
+    if(!selectedLanguage || !selectedScenario){
+        alert("Please select a language and a scenario first.");
         return;
     }
 
-    // Save selections
+    // Save selections so chat.html can use them
     localStorage.setItem("language", selectedLanguage);
     localStorage.setItem("scenario", selectedScenario);
-    localStorage.setItem("character", "Friend"); // or whatever character you want
 
-    // Go to chat.html
+    // Redirect to chat page
     window.location.href = "chat.html";
 });
-
 
 </script>
 
