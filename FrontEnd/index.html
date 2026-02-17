@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
-body {font-family:'Inter',sans-serif;background:#f9fafb;position:relative;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
+body {font-family:'Inter','Segoe UI Emoji','Noto Color Emoji','Apple Color Emoji',sans-serif;background:#f9fafb;position:relative;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
 
 /* BACKGROUND SHAPES */
 body::before {
@@ -28,7 +28,7 @@ nav ul li:hover{color:#3B82F6;}
 nav .login-btn{background:#3B82F6;color:white;padding:8px 18px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;}
 nav .login-btn:hover{background:#2563eb;}
 
-/* HERO SECTION - 2 columns */
+/* HERO SECTION */
 .hero{display:flex;align-items:center;justify-content:space-between;padding:0 8%;position:relative;z-index:2;flex:1;min-height:80vh;}
 .hero-left{flex:1;display:flex;flex-direction:column;justify-content:center;gap:30px;}
 .hero-left h1{font-size:48px;font-weight:700;color:#111827;line-height:1.2;}
@@ -37,38 +37,52 @@ nav .login-btn:hover{background:#2563eb;}
 .primary-btn:hover{background:#2563eb;transform:translateY(-3px);box-shadow:0 8px 20px rgba(59,130,246,0.23);}
 .hero-right{flex:1;display:flex;justify-content:center;align-items:center;}
 .hero-right img {
-    width: 500px;          
+    width: 500px;
     max-width: 100%;
-    height: auto;           
-    object-fit: contain;    
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); 
-    border-radius: 0;      
-
-    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: cover;
-
-    mask-image: radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
 }
 
 /* SECOND SECTION */
 .section{display:none;flex-direction:column;align-items:center;position:relative;z-index:2;margin-top:50px;}
 .section h2{font-size:32px;margin-bottom:40px;color:#111827;}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;width:100%;max-width:900px;}
-.card{background:white;border-radius:25px;padding:30px;text-align:center;cursor:pointer;transition:0.4s;box-shadow:0 15px 40px rgba(0,0,0,0.05);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:30px;width:100%;max-width:900px;}
+.card{background:white;border-radius:25px;padding:20px;text-align:center;cursor:pointer;transition:0.4s;box-shadow:0 15px 40px rgba(0,0,0,0.05);display:flex;flex-direction:column;align-items:center;gap:10px;}
 .card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 20px 60px rgba(59,130,246,0.25);}
 .card.selected{border:3px solid #3B82F6;}
-.card img{width:90px;margin-bottom:15px;}
+
+/* Language flags */
+#languageCards .card img {
+    width: 40px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 0;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+}
+
+/* Scenario icons */
+#scenarioCards .card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 0;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+}
+
 .start-wrapper{display:flex;justify-content:center;margin-top:60px;}
 .start-btn{padding:18px 40px;border:none;border-radius:15px;font-size:18px;font-weight:600;background:#10B981;color:white;cursor:pointer;display:none;transition:0.3s;}
 .start-btn:hover{background:#059669;transform:scale(1.05);}
 
 /* RESPONSIVE */
-@media(max-width:900px){.hero{flex-direction:column;text-align:center;gap:30px;padding:50px 8%;}.hero-left h1{font-size:36px;}.hero-left p{font-size:18px;}.hero-right img{width:300px;}}
+@media(max-width:900px){
+    .hero{flex-direction:column;text-align:center;gap:30px;padding:50px 8%;}
+    .hero-left h1{font-size:36px;}
+    .hero-left p{font-size:18px;}
+    .hero-right img{width:300px;}
+}
 </style>
 </head>
 <body>
@@ -99,28 +113,40 @@ nav .login-btn:hover{background:#2563eb;}
 <div class="section" id="secondSection">
     <h2>🌍 Choose Your Language</h2>
     <div class="cards" id="languageCards">
-        <div class="card" data-lang="English">🇺🇸 English</div>
-        <div class="card" data-lang="Spanish">🇪🇸 Spanish</div>
-        <div class="card" data-lang="French">🇫🇷 French</div>
-        <div class="card" data-lang="German">🇩🇪 German</div>
+        <div class="card" data-lang="English">
+            <img src="https://flagcdn.com/us.svg" alt="US Flag">
+            English
+        </div>
+        <div class="card" data-lang="Spanish">
+            <img src="https://flagcdn.com/es.svg" alt="Spain Flag">
+            Spanish
+        </div>
+        <div class="card" data-lang="French">
+            <img src="https://flagcdn.com/fr.svg" alt="France Flag">
+            French
+        </div>
+        <div class="card" data-lang="German">
+            <img src="https://flagcdn.com/de.svg" alt="Germany Flag">
+            German
+        </div>
     </div>
 
     <h2 style="margin-top:60px;display:none;" id="scenarioTitle">🎭 Choose Your Scenario</h2>
     <div class="cards" id="scenarioCards" style="display:none;">
         <div class="card" data-scenario="Restaurant">
-            <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png">
+            <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="Restaurant Icon">
             <h3>Restaurant</h3><p>Friendly Waiter</p>
         </div>
         <div class="card" data-scenario="Airport">
-            <img src="https://cdn-icons-png.flaticon.com/512/201/201818.png">
+            <img src="https://cdn-icons-png.flaticon.com/512/201/201818.png" alt="Airport Icon">
             <h3>Airport</h3><p>Airport Officer</p>
         </div>
         <div class="card" data-scenario="Interview">
-            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png">
+            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" alt="Interview Icon">
             <h3>Job Interview</h3><p>HR Manager</p>
         </div>
         <div class="card" data-scenario="Hospital">
-            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png">
+            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="Hospital Icon">
             <h3>Hospital</h3><p>Doctor</p>
         </div>
     </div>
@@ -169,20 +195,14 @@ document.querySelectorAll("#scenarioCards .card").forEach(card=>{
 
 /* Start button redirect */
 document.getElementById("startBtn").addEventListener("click", function(){
-
     if(!selectedLanguage || !selectedScenario){
         alert("Please select a language and a scenario first.");
         return;
     }
-
-    // Save selections so chat.html can use them
     localStorage.setItem("language", selectedLanguage);
     localStorage.setItem("scenario", selectedScenario);
-
-    // Redirect to chat page
     window.location.href = "chat.html";
 });
-
 </script>
 
 </body>
